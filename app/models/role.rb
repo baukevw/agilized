@@ -9,5 +9,8 @@
 #
 
 class Role < ApplicationRecord
+  validates :name, presence: true, length: { minimum: 4 }
   belongs_to :user_project, foreign_key: 'user_project_id'
 end
+
+
