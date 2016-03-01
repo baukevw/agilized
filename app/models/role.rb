@@ -9,5 +9,5 @@
 #
 
 class Role < ApplicationRecord
-  belongs_to :user_projects
+  belongs_to :user_project, foreign_key: 'user_project_id'
 end
