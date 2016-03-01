@@ -5,7 +5,7 @@ rvm:
 jdk:
  - oraclejdk8
 script:
- - bundle exec rake spec speccop rubocop
+ - bundle exec rake spec rubocop
 before_script:
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
