@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  has_many :user_projects
+  has_many :projects, through: :user_projects
+  has_many :activities
+
   def self.from_omniauth(auth)
     logger.info(auth)
     where(provider: auth.provider,
