@@ -1,5 +1,3 @@
-require 'ffaker'
-
 FactoryGirl.define do
   factory :activity do
     yesterday { Faker::Lorem.words(4) }
