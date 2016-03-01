@@ -1,0 +1,24 @@
+language: ruby
+cache: bundler
+rvm:
+ - 2.2.3
+jdk:
+ - oraclejdk8
+script:
+ - bundle exec rake speccop rubocop
+before_install:
+ - "export DISPLAY=:99.0"
+ - "sh -e /etc/init.d/xvfb start"
+ - "gem install bundler"
+ - "bundle install"
+ - "RAILS_ENV=test rake db:setup"
+branches:
+ only:
+   - master
+   - staging
+   - develop
+   - /^(?i:release).*$/
+addons:
+ postgresql: "9.3"
+services:
+ - postgresql
