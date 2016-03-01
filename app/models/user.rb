@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   def self.from_omniauth(auth)
+    logger.info(auth)
     where(provider: auth.provider,
                  uid: auth.uid).first_or_create do |new_user|
       new_user.email = auth.info.email
