@@ -51,11 +51,11 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :request
-  config.include Devise::TestHelpers, type: [:controller, :feature]
-  config.include Warden::Test::Helpers
-  config.before :suite do
-    Warden.test_mode!
-  end
+  # config.include Devise::TestHelpers, type: [:controller, :feature]
+  # config.include Warden::Test::Helpers
+  # config.before :suite do
+  #   Warden.test_mode!
+  # end
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -66,7 +66,7 @@ RSpec.configure do |config|
       example.run
     end
   end
-  config.after :each do
-    Warden.test_reset!
-  end
+  # config.after :each do
+  #   Warden.test_reset!
+  # end
 end

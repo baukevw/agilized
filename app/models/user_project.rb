@@ -12,4 +12,5 @@
 
 class UserProject < ApplicationRecord
   belongs_to :project
+  has_one :role
 end

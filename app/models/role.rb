@@ -9,4 +9,5 @@
 #
 
 class Role < ApplicationRecord
+  belongs_to :user_projects
 end
