@@ -1,3 +1,5 @@
+{<img src="https://travis-ci.org/baukevw/agilized.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/baukevw/agilized]
+
 ## README
 
 This README would normally document whatever steps are necessary to get the
