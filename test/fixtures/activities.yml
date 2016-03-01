@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  yesterday: MyString
+  today: MyString
+  problems: MyString
+  user_id: 
+  project_id: 
+
+two:
+  yesterday: MyString
+  today: MyString
+  problems: MyString
+  user_id: 
+  project_id: 
