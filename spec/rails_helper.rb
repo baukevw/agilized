@@ -1,8 +1,14 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+require 'simplecov'
+SimpleCov.formatters = [
+    SimpleCov::Formatter::HTMLFormatter,
+]
+SimpleCov.start
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -66,7 +72,14 @@ RSpec.configure do |config|
       example.run
     end
   end
+<<<<<<< HEAD
   # config.after :each do
   #   Warden.test_reset!
   # end
+=======
+  config.after :each do
+    Warden.test_reset!
+  end
+  OmniAuth.config.test_mode = true
+>>>>>>> origin
 end
