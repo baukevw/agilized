@@ -5,13 +5,11 @@ rvm:
 jdk:
  - oraclejdk8
 script:
- - bundle exec rake speccop rubocop
-before_install:
+ - bundle exec rake spec rubocop
+before_script:
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
- - "gem install bundler"
- - "bundle install"
- - "RAILS_ENV=test rake db:setup"
+ - "RAILS_ENV=test bundle exec rake db:setup"
 branches:
  only:
    - master

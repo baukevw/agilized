@@ -9,7 +9,3 @@ desc 'Rubocop linting task'
 task :rubocop do
   sh 'rubocop -R --fail-level W app'
 end
-
-task :speccop do
-  sh 'rubocop -R --fail-level W spec'
-end
