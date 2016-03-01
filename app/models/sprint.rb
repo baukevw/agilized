@@ -11,6 +11,10 @@
 #
 
 class Sprint < ApplicationRecord
+  validates :title, presence: true, length: { minimum: 4 }
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+
   belongs_to :project
   has_many :activities
 end

@@ -14,6 +14,14 @@
 #
 
 class Activity < ApplicationRecord
+  validates :yesterday, presence: true, length: { minimum: 4 }
+  validates :today, presence: true, length: { minimum: 4 }
+  validates :problems, presence: true, length: { minimum: 4 }
+
+  validates :user_id, presence: true
+  validates :project_id, presence: true
+  validates :sprint_id, presence: true
+
   belongs_to :sprint
   belongs_to :project
 end
