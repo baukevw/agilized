@@ -10,7 +10,6 @@ before_install:
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
  - "gem install bundler"
- - "bundle install"
  - "RAILS_ENV=test rake db:setup"
 branches:
  only:
