@@ -13,5 +13,5 @@
 class UserProject < ApplicationRecord
   belongs_to :project
   belongs_to :user
-  has_one :role
+  has_one :role, foreign_key: 'user_project_id'
 end
