@@ -11,11 +11,11 @@
 #
 
 class UserProject < ApplicationRecord
-  validates :project_id, presence: true
-  validates :user_id, presence: true
-  validates :role_id, presence: true
+  validates :project, presence: true, on: :update
+  validates :user, presence: true, on: :update
+  # validates :role, presence: true, on: :update
 
-  belongs_to :project
-  belongs_to :user
+  belongs_to :project, optional: true
+  belongs_to :user, optional: true
   has_one :role, foreign_key: 'user_project_id'
 end

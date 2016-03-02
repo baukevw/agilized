@@ -274,4 +274,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_SECRET'],
                    callback_url: environment_domain
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo,gist,read:org"
 end

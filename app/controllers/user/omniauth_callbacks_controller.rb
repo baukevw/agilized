@@ -19,6 +19,17 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def github
+    return if request.env['omniauth.auth'].info.email.nil?
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    if @user.persisted?
+      login_oauth_user(@user, 'Github')
+    else
+      flash[:alert] = 'GitHub Authentication has Failed. Please Register'
+      redirect_to new_user_registration_path
+    end
+  end
+
   private
 
   ##
