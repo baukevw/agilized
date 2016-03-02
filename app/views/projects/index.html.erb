@@ -1,0 +1,7 @@
+<%= @projects.each do |f| %>
+<%= link_to "Show the fucking project", project_path(f) %>
+<%= link_to "Remove the fucking project", project_path(f), method: :delete, data: { confirm: "zeker>" } %>
+<%= f.name %>
+<% end %>
+
+<%= link_to "New project", new_project_path %>

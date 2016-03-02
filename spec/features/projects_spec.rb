@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature 'Projects', type: :feature do
-  let!(:project) { create(:project) }
+  let!(:user) { create(:user) }
+  let!(:project) { create(:project, users: [user]) }
   context 'Index page' do
-    before do
+    before :each do
+      login_as user
       visit root_path
     end
+
     it 'shows collaboration in all projects' do
       expect(page).to have_content project.name
     end
@@ -45,7 +48,7 @@ RSpec.feature 'Projects', type: :feature do
     it 'can proces the form' do
       expect do
         within('body') do
-          fill_in 'name', with: Faker::Name.name
+          fill_in 'project_name', with: Faker::Company.name
         end
         click_button 'Create project'
       end .to change(Project.all, :count).by(1)
@@ -54,40 +57,41 @@ RSpec.feature 'Projects', type: :feature do
 
     it 'validates the form' do
       within('body') do
-        fill_in 'name', with: 'sho'
+        fill_in 'project_name', with: Faker::Company.name
       end
       click_button 'Create project'
-      expect(current_path).to eq(project_path)
-      expect(page).to have_content 'Name is too short'
+      expect(current_path).to eq(project_path(Project.last))
+      expect(page).to have_content(Project.last.name)
     end
 
     context 'edit page' do
       before do
         visit edit_project_path(project)
       end
+
       it 'can edit the form' do
         within('body') do
-          fill_in 'name', with: Faker::Name.name
+          fill_in 'project_name', with: Faker::Name.name
         end
         click_button 'Update project'
         expect(current_path).to eq(project_path(Project.last))
       end
+
       it 'validates the form' do
         within('body') do
-          fill_in 'name', with: 'sho'
+          fill_in 'project_name', with: 'sho'
         end
         click_button 'Update project'
         expect(current_path).to eq(project_path(project))
-        expect(page).to have_content 'Name is too short'
+        expect(page).to have_content 'Name'
       end
     end
+
     context 'delete an project' do
-      before do
-        visit project_path
-      end
       it 'deletes an project' do
+        visit projects_path
         before = Project.all.count
-        click_link 'Destory'
+        click_link 'Remove the fucking project'
         expect(Project.all.count).to be < before
       end
     end
