@@ -22,7 +22,9 @@ class User < ApplicationRecord
                    password: pass, confirmed_at: Time.zone.now)
         u
       else
-        User.where(email: auth.info.email).first
+        u = User.where(email: auth.info.email).first
+        Identity.create!(uid: auth.uid, provider: auth.provider, user: u)
+        return u
       end
     # where(identity: { provider: auth.provider,
     #              uid: auth.uid }).first_or_create do |new_user|
