@@ -25,6 +25,17 @@ development:
   <<: *default
   database: agilized_development
 
+docker:
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV["PG_HOST"] %>
+  username: <%= ENV["PG_USER"] %>
+  password: <%= ENV["PG_PASS"] %>
+  port: 5432
+  database: agilized_docker
+
+
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
