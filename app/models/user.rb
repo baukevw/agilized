@@ -7,6 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :github]
 
+  has_many :user_projects
+  has_many :projects, through: :user_projects
+  has_many :activities
+
   def self.from_omniauth(auth)
     identity = all.joins(:identities).where(identities: { provider: auth.provider, uid: auth.uid}).first
     if identity.nil?

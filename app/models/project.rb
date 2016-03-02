@@ -9,8 +9,11 @@
 #
 
 class Project < ApplicationRecord
+  validates :name, presence: true, length: { minimum: 4 }
+
   has_many :activities
   has_many :sprints
-  has_many :roles
-  # has_many :users, through: :user_projects
+  # has_many :roles
+  has_many :user_projects
+  has_many :users, through: :user_projects
 end
