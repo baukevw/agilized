@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: sprints
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  start_date :date
+#  end_date   :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  project_id :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Sprint, type: :model do
