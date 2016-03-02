@@ -1,0 +1,2 @@
+module Project::ActivitiesHelper
+end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
       :omniauth_callbacks => "user/omniauth_callbacks"
   }
 
-  resources :projects
+  resources :projects do
+    resources :activities, controller: 'project/activities'
+  end
 
   authenticated :user do
     root 'projects#index', as: :authenticated_root

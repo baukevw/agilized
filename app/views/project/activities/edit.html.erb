@@ -1,0 +1,12 @@
+<%= form_for [:project, @activity] do |f| %>
+  <%= f.label 'Wat heb je de vorige dag gedaan?' %>
+  <%= f.text_field :yesterday %>
+
+  <%= f.label 'Wat ga je vandaag doen?' %>
+  <%= f.text_field :today %>
+
+  <%= f.label 'Heb je problemen dan jung?' %>
+  <%= f.text_field :problems %>
+
+  <%= f.submit %>
+<% end %>

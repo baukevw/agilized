@@ -1,0 +1,18 @@
+<h1><%= @project.name %></h1>
+
+
+<% @activity.order(:sprint_id).each do |f| %>
+  <ul>
+    <li><%= f.yesterday %></li>
+    <li><%= f.today %></li>
+    <li><%= f.problems %></li>
+    <li><%= f.date %></li>
+    <li><%= f.sprint_id %></li>
+    <li><%= link_to "Edit the focking dsu", edit_project_activity_path(f.project_id, f.id) %></li>
+  </ul>
+<% end %>
+
+
+
+
+

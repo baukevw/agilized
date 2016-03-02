@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :sprint do
-    title { Faker::Product.brand }
-    start_date { Faker::Date.between(7.days.ago, Date.yesterday) }
-    end_state { Faker::Date.today }
+    title { Faker::Company.name }
+    start_date { Faker::Date.between(7.days.ago, 4.days.ago) }
+    end_date { Faker::Date.backward(1) }
   end
 end
