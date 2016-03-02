@@ -8,8 +8,8 @@ feature "Omniauth", :type => :feature do
             {
                 info: {
                     provider: 'facebook',
-                    uid: proc { Faker::Number.number(8) },
-                    email: proc { Faker::Email.email }
+                    uid: Faker::Number.number(8),
+                    email: Faker::Internet.email
                 }
             }
         )
@@ -22,7 +22,7 @@ feature "Omniauth", :type => :feature do
             {
                 info: {
                     provider: 'facebook',
-                    uid: proc { Faker::Number.number(8) },
+                    uid: Faker::Number.number(8),
                 }
             }
         )
