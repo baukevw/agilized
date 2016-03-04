@@ -1,0 +1,15 @@
+<div class="nav-side">
+  <%= link_to image_tag("logo-white.png"), root_path, class: 'nav-logo' %>
+  <nav>
+    <ul>
+      <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#'), class: 'active' %>
+      <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#') %>
+      <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#') %>
+    </ul>
+  </nav>
+  <footer>
+    <p>
+      &copy; <%= Time.now.year %> Agilized. - F*** it, it works.
+    </p>
+  </footer>
+</div>
