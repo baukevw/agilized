@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agilized</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'landing', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  </head>
+
+  <body>
+    <div class="slide">
+      <div class="wrapper">
+        <header>
+          <div class="container">
+            <%= link_to image_tag("logo-aqua.png"), root_path, class: 'logo' %>
+            <div class="nav-btn">
+              <a id="nav-toggle" href="#"><span></span></a>
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="container">
+            <div class="btn-container">
+              <%= link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#', class: 'btn btn-blue' %>
+              <%= link_to (content_tag :span, (), class: 'fa fa-pencil-square-o') + " Register Now", '#', class: 'btn btn-blue' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-side">
+      <%= link_to image_tag("logo-white.png"), root_path, class: 'nav-logo' %>
+      <nav>
+        <ul>
+          <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#'), class: 'active' %>
+          <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#') %>
+          <%= content_tag :li, (link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", '#') %>
+        </ul>
+      </nav>
+      <footer>
+        <p>
+          &copy; <%= Time.now.year %> Agilized. - F*** it, it works.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

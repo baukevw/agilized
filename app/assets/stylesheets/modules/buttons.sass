@@ -1,27 +1,20 @@
-.hamburger
-	float: right
-	line-height: 60px
-	
-	.fa
-		color: #FFF
-		font-size: 26px
-
-.big-button, .small-button
-	background: $blue
+.btn
 	color: #FFF
 	text-transform: uppercase
-	font-weight: 600
-	&:hover
-		opacity: 0.5
-		
-
-.big-button
-	padding: 15px 20px 
+	font-weight: 300
+	padding: 15px 20px
 	font-size: 22px
-	font-weight: 600
+	display: inline-block
+	letter-spacing: 1.5px
+	text-shadow: 1.5px 1px 0px rgba(0, 0, 0, 0.5)
 
-.small-button
+
+.btn-sm
 	padding: 5px 10px
 	font-size: 18px
-	font-weight: 400
 
+.btn-blue
+	background: $blue
+
+	&:hover
+		background: rgba($blue, 0.5)
