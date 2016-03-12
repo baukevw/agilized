@@ -34,9 +34,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :github]
 
   has_many :identities
-  has_many :user_projects
-  has_many :projects, through: :user_projects
   has_many :activities
+  has_many :user_in_teams
+  has_many :teams, through: :user_in_teams
   accepts_nested_attributes_for :identities
 
   validates :identities, presence: true, if: proc { oauth == true }

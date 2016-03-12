@@ -11,20 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302034243) do
+ActiveRecord::Schema.define(version: 20160312222023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "yesterday"
-    t.string   "today"
-    t.string   "problems"
+    t.text     "yesterday"
+    t.text     "today"
+    t.text     "problems"
+    t.boolean  "late"
+    t.text     "late_reason"
+    t.boolean  "absence"
+    t.text     "absence_reason"
+    t.integer  "daily_standup_id"
     t.integer  "user_id"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "daily_standups", force: :cascade do |t|
+    t.datetime "date"
+    t.text     "description"
     t.integer  "sprint_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "identities", force: :cascade do |t|
@@ -37,29 +48,46 @@ ActiveRecord::Schema.define(version: 20160302034243) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sprints", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "team_in_projects", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sprints", force: :cascade do |t|
-    t.string   "title"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "project_id"
-  end
-
-  create_table "user_projects", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
+  create_table "user_in_teams", force: :cascade do |t|
     t.integer  "role_id"
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.boolean  "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

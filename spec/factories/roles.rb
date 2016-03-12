@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :role do
-    name { Faker::Job.title }
+    name "MyString"
+    description "MyText"
   end
 end
