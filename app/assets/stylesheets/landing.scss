@@ -3,30 +3,9 @@
 @import 'modules/*';
 @import 'blocks/sidebar';
 
-body, html {
-  height:  100%;
-}
-
-* {
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
 
 body {
-  font-family: $font-family;
-  -webkit-font-smoothing: antialiased;
-
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .slide {
-    height: auto;
-    min-height: 100%;
-    width:100%;
+  .page {
     background-image: image-url('landing-bg1.jpg');
     background-position: center top;
     background-size: cover;

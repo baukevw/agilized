@@ -2,43 +2,26 @@
 <html>
   <head>
     <title>Agilized</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-    <%= stylesheet_link_tag 'application','http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css' %>
-    <%= stylesheet_link_tag 'application','https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="pure-g">
-          <div class="pure-u-1-2 left brand">
-            <%= link_to image_tag("logo-white.png"), root_path %>
-          </div> <!-- Needs to be changed to an image -->
-          <div class="pure-u-1-2 right">
-            <div class="hamburger"><i class="fa fa-bars"><a href="#"></a></i></div>
+    <div class="page">
+      <header>
+        <div class="container">
+          <%= link_to image_tag("logo-white.png"), root_path, class: 'logo' %>
+          <div class="nav-btn">
+            <a id="nav-toggle" href="#"><span></span></a>
           </div>
         </div>
-      </div>
-    </header>
-    <div class="middle">
-      <div class="container">
-        <h1>Dit is een h1 tekst</h1>
-        <h2>Dit is een h2 tekst</h2>
-        <h3>Dit is een h3 tekst</h3>
-        <a href="#" class="big-button">Big button</a>
-        <a href="#" class="small-button">Small button</a>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-        <%= yield %>
-      </div>
+      </header>
+      <%= yield %>
     </div>
-    <footer>
-      <div class="container">
-        <p>Fuck it, it works! - © Agilized <%= Time.now.year %></p>
-      </div>
-    </footer>
+    <%= render 'shared/sidebar' %>
   </body>
 </html>

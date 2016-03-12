@@ -9,8 +9,10 @@
 #
 
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @projects = Project.all
+    @projects = User.find(current_user.id).projects.all
   end
 
   def new
@@ -42,8 +44,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+
     if @project.save
-      redirect_to @project
+      @project.user_projects.create( :user_id => current_user.id )
+      redirect_to projects_path
     else
       render :new
     end

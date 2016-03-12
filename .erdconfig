@@ -1,0 +1,14 @@
+attributes:
+  - content
+  - foreign_key
+  - primary_key
+  - inheritance
+filename: model-erd
+filetype: pdf
+indirect: true
+inheritance: true
+markup: true
+title: Models
+sort: false
+
+# bundle exec erd
