@@ -19,3 +19,5 @@
 .idea
 .env
 coverage
+.DS_Store
+model-erd.pdf

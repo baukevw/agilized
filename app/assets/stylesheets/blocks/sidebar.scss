@@ -1,0 +1,126 @@
+
+//----- sidebar style
+
+.nav-side {
+  width: 300px;
+  background-color: $gray-darkest;
+  position: fixed;
+  top: 0;
+  right: -300;
+  height:100%;
+  min-height: 100%;
+  overflow: auto;
+  padding: 40px;
+
+  .nav-logo {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+
+  //----- Navigation style
+
+  nav {
+    margin-top: 50px;
+
+    ul{
+      padding-bottom: 50px;
+      border-bottom: 1px solid $gray-light;
+
+      li {
+
+        &.active {
+          background-color: $blue;
+
+          a {
+            color: white;
+
+            &:hover {
+              color: white;
+            }
+          }
+
+          &:hover{
+            background-color: rgba($blue, 0.5);
+          }
+        }
+
+        a {
+          padding: 20px;
+          display: block;
+          color: white;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  //----- Footer style
+  footer {
+    margin-top: 50px;
+    p{
+      font-size: 11px;
+      color: $gray-base;
+    }
+  }
+}
+
+
+//----- Change state after adding active class
+
+.nav-active {
+  .nav-side {
+    right: 0;
+    z-index: 300;
+  }
+
+  .page {
+    margin-left: -300px;
+    position: relative;
+  }
+}
+
+.nav-side {
+  right: -300px;
+}
+
+
+//----- Nav Toggle Button w/ animation
+
+#nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: $blue;
+  position: absolute;
+  display: block;
+  content: '';
+}
+#nav-toggle span:before {
+  top: -10px;
+}
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  transition: all 500ms ease-in-out;
+}
+#nav-toggle.active span {
+  background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}

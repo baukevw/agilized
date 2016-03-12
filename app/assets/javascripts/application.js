@@ -11,6 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $( "#nav-toggle" ).click(function(e) {
+    e.preventDefault();
+    $('body').toggleClass( "nav-active" );
+    $( '#nav-toggle' ).toggleClass( "active" );
+  });
+});

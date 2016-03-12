@@ -1,0 +1,20 @@
+<div class="page">
+  <div class="wrapper">
+    <header>
+      <div class="container">
+        <%= link_to image_tag("logo-aqua.png"), root_path, class: 'logo' %>
+        <div class="nav-btn">
+          <a id="nav-toggle" href="#"><span></span></a>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="container">
+        <div class="btn-container">
+          <%= link_to (content_tag :span, (), class: 'fa fa-sign-in') + " Sign In", new_user_session_path, class: 'btn btn-blue' %>
+          <%= link_to (content_tag :span, (), class: 'fa fa-pencil-square-o') + " Register Now", '#', class: 'btn btn-blue' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

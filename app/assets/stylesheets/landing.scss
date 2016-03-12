@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'font-awesome';
+@import 'modules/*';
+@import 'blocks/sidebar';
+
+
+body {
+  .page {
+    background-image: image-url('landing-bg1.jpg');
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .wrapper {
+      position: absolute;
+      height: auto;
+      min-height: 100%;
+      width:100%;
+      background-color: rgba(255,255,255,0.2);
+
+      header {
+        height: 120px;
+
+        .logo {
+          float: left;
+          img {
+            margin-top: 40px;
+          }
+        }
+
+        .nav-btn {
+          float: right;
+          margin-top: 75px;
+        }
+      }
+
+      .content {
+        margin-top: 20%;
+
+        .btn-container {
+          text-align: center;
+
+          .btn {
+            margin: 0 25px;
+            min-width: 230px;
+          }
+        }
+
+      }
+    }
+  }
+}

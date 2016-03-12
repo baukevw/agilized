@@ -1,0 +1,60 @@
+.table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.7;
+  vertical-align: top;
+  border-top: 1px solid $gray-lightest;
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+}
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid $gray-lightest;
+}
+
+
+.table > tbody + tbody {
+  border-top: 2px solid $gray-lightest;
+}
+
+.panel {
+  margin-bottom: 21px;
+  background-color: #fff;
+  border: 1px solid $gray-lightest;
+  border-radius: 0px;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.panel-body:after {
+  clear: both;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+}
+
+.panel-footer {
+  padding: 10px 15px;
+  background-color: $gray-lightest;
+}
+
+.panel-default > .panel-heading {
+  background-color: $gray-lightest;
+  border-color: $gray-lightest;
+}
