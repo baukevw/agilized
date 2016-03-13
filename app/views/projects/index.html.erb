@@ -1,34 +1,50 @@
 <div class="header-small">
   <div class="wrapper">
     <div class="triangle">
-      <h1>Get started with your teams</h1>
+      <h1>Get started with your projects</h1>
     </div>
   </div>
 </div>
 <div class="content">
   <div class="container">
-    <h1>My Teams</h1>
+    <h1>My Projects</h1>
     <div class="panel panel-default">
       <div class="panel-heading">
       </div>
       <table class="table">
+        <thead>
+          <th> Project Name</th>
+          <th>Your Team Name</th>
+          <th>Your Role</th>
+        </thead>
         <tbody>
-          <% @projects.each do |f| %>
+          <% if @projects.each do |f| %>
             <tr>
               <td>
                 <%= f.name %>
+              </td>
+              <td>
+                <%= f.teams.first.name %>
+              </td>
+              <td>
+                <%= f.teams.first.roles.first.name %>
               </td>
               <td>
                 <%= link_to (content_tag :span, (), class: 'fa fa-eye fa-fw') + ' view ' + f.name, project_path(f), class: 'btn btn-sm btn-blue', title: 'Show'  %>
                 <%= link_to (content_tag :span, (), class: 'fa fa-remove fa-fw') + ' delete ' + f.name, project_path(f), class: 'btn btn-sm btn-red', title: 'Delete', method: :delete, data: { :confirm => "Are you sure?" } %>
               </td>
             </tr>
+          <% end.empty? %>
+            <tr> <td>
+              You don't have any projects yet.
+            </td> </tr>
           <% end %>
+
         </tbody>
       </table>
       <div class="panel-footer">
       </div>
     </div>
-    <%= link_to (content_tag :span, (), class: 'fa fa-plus fa-fw') + " New Team", new_project_path , class: 'btn btn-green' %>
+    <%= link_to (content_tag :span, (), class: 'fa fa-plus fa-fw') + " New Project", new_project_path , class: 'btn btn-green' %>
   </div>
 </div>

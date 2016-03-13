@@ -1,7 +1,11 @@
 <%= form_for @project do |f| %>
-  <%= f.label 'name' %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label 'name' %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-blue' %>
+  </div>
 <% end %>
 
 

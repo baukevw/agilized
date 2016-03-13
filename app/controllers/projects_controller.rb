@@ -12,15 +12,33 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = User.find(current_user.id).projects.all
-  end
-
-  def new
-    @project = Project.new
+    @projects = Project.all
   end
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  def new
+    @project = Project.new
+    @team = Team.new
+    @project.teams.build
+    @role = Role.new
+    @project.teams.first.roles.build
+  end
+
+  def create
+    @project = Project.new(project_params)
+
+    if @project.save
+      @project.teams.first.user_in_teams.first.update_attributes(user_id: current_user.id, admin: true)
+      redirect_to root_path
+    else
+      @project.errors.messages.each do |c|
+        flash[:alert] = c[1].first
+      end
+      render :new
+    end
   end
 
   def edit
@@ -42,20 +60,9 @@ class ProjectsController < ApplicationController
     redirect_to root_path
   end
 
-  def create
-    @project = Project.new(project_params)
-
-    if @project.save
-      @project.user_projects.create( :user_id => current_user.id )
-      redirect_to projects_path
-    else
-      render :new
-    end
-  end
-
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :description, teams_attributes: [ :name, roles_attributes: [ :name, :description ]])
   end
 end

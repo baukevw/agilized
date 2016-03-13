@@ -23,8 +23,6 @@ body {
   .container-sm {
     width: 60%;
     margin: 0 auto;
-    background-color: $gray-lightest;
-    padding: 20px;
   }
 
   .page {
@@ -35,5 +33,11 @@ body {
 
   .content {
     margin: 50px 0;
+  }
+
+  .well {
+    background-color: $gray-lightest;
+    padding: 20px;
+    margin:30px 0;
   }
 }
