@@ -6,32 +6,25 @@
   </div>
 </div>
 <div class="content">
-  <div class="container">
+  <div class="container-sm">
     <h1>My Projects</h1>
     <div class="panel panel-default">
       <div class="panel-heading">
       </div>
       <table class="table">
         <thead>
-          <th> Project Name</th>
-          <th>Your Team Name</th>
-          <th>Your Role</th>
+          <th>Project Name</th>
+          <th></th>
         </thead>
         <tbody>
           <% if @projects.each do |f| %>
             <tr>
               <td>
-                <%= f.name %>
+                <%= f.first.name %>
               </td>
               <td>
-                <%= f.teams.first.name %>
-              </td>
-              <td>
-                <%= f.teams.first.roles.first.name %>
-              </td>
-              <td>
-                <%= link_to (content_tag :span, (), class: 'fa fa-eye fa-fw') + ' view ' + f.name, project_path(f), class: 'btn btn-sm btn-blue', title: 'Show'  %>
-                <%= link_to (content_tag :span, (), class: 'fa fa-remove fa-fw') + ' delete ' + f.name, project_path(f), class: 'btn btn-sm btn-red', title: 'Delete', method: :delete, data: { :confirm => "Are you sure?" } %>
+                <%= link_to (content_tag :span, (), class: 'fa fa-eye fa-fw') + ' view ' + f.first.name, project_path(f.first), class: 'btn btn-sm btn-blue', title: 'Show'  %>
+                <%= link_to (content_tag :span, (), class: 'fa fa-remove fa-fw') + ' delete ' + f.first.name, project_path(f.first), class: 'btn btn-sm btn-red', title: 'Delete', method: :delete, data: { :confirm => "Are you sure?" } %>
               </td>
             </tr>
           <% end.empty? %>

@@ -1,70 +1,47 @@
 <div class="content">
-  <div class="container">
+  <div class="container-sm">
     <%= link_to content_tag(:i, (), class: 'fa fa-arrow-left') + ' Back', projects_path, class: 'btn btn-blue' %>
     <h1><%= @project.name %> Dashboard</h1>
-    <div class="pure-g">
-      <div class="pure-u-md-1-2">
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3>My Team</h3>
-          </div>
-          <table class="table">
-            <thead>
-              <th>Name</th>
-              <th>Role</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <% @project.users.each do |u| %>
-                <tr>
-                  <td>
-                    <%= u.email %>
-                  </td>
-                  <td>
-                    RoleName
-                  </td>
-                  <td>
-                    <%= link_to (content_tag :span, (), class: 'fa fa-pencil fa-fw'), '#', class: 'btn btn-sm btn-blue', title: 'Edit'  %>
-                    <%= link_to (content_tag :span, (), class: 'fa fa-remove fa-fw'), '#', class: 'btn btn-sm btn-red', title: 'Delete', method: :delete, data: { :confirm => "Are you sure?" } %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <div class="panel-footer">
-            <%= link_to (content_tag :span, (), class: 'fa fa-plus fa-fw') + ' Add Teammember', '#', class: 'btn btn-sm btn-green', title: 'Add'  %>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-md-1-2">
-            <%= link_to (content_tag :span, (), class: 'fa fa-users fa-fw') + ' Start Daily Standup', '#', class: 'btn btn-green btn-full-width'  %>
-            <%= link_to (content_tag :span, (), class: 'fa fa-eye fa-fw') + ' View Daily Standups', '#', class: 'btn btn-blue btn-full-width'  %>
-            <%= link_to (content_tag :span, (), class: 'fa fa-users fa-fw') + ' Start Retrospective Meeting', '#', class: 'btn btn-green btn-full-width'  %>
-          </div>
-          <div class="pure-u-md-1-2">
-            <div class="days-left">
-              <span class="number">9</span>
-              <span class="text">Days Left</span>
-            </div>
-          </div>
-        </div>
-
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>My Teams</h3>
       </div>
-
-      <div class="pure-u-md-1-2">
-        <div class="panel panel-default graph">
-          <div class="panel-heading">
-            <h3>Monthy Stats</h3>
-          </div>
-          <div class="panel-body">
-            <img src="https://image-cc.s3.envato.com/files/73594691/pre_590.jpg" />
-          </div>
-          <div class="panel-footer">
-          </div>
+      <table class="table">
+        <thead>
+          <th>Team Name</th>
+          <th>Your Role</th>
+          <th>Team Members</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @project.teams.each do |u| %>
+            <%# next if u.users.find_by_id(current_user.id) == nil %>
+            <tr>
+              <td>
+                <%= u.name %>
+              </td>
+              <td>
+                <% if u.users.find_by_id(current_user.id) %>
+                  <%= u.roles.joins(:users).first.name %>
+                <% else %>
+                  You're not a part of this team
+                <% end %>
+              </td>
+              <td>
+                <%= u.users.count %>
+              </td>
+              <td>
+                <%= link_to 'View', team_path(u) %>
+                <%= link_to (content_tag :span, (), class: 'fa fa-pencil fa-fw'), '#', class: 'btn btn-sm btn-blue', title: 'Edit'  %>
+                <%= link_to (content_tag :span, (), class: 'fa fa-remove fa-fw'), '#', class: 'btn btn-sm btn-red', title: 'Delete', method: :delete, data: { :confirm => "Are you sure?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="panel-footer">
+        <%= link_to (content_tag :span, (), class: 'fa fa-plus fa-fw') + ' Add Team', '#', class: 'btn btn-sm btn-green', title: 'Add'  %>
       </div>
     </div>
-  </div>
 </div>
 

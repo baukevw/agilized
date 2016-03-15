@@ -2,17 +2,18 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = Project.all
+    @projects = User.find_by_id(current_user.id).teams.joins(:projects).map(&:projects)
   end
 
   def show

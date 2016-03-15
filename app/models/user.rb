@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_many :activities
   has_many :user_in_teams
   has_many :teams, through: :user_in_teams
+  has_many :roles, through: :user_in_teams
   accepts_nested_attributes_for :identities
 
   validates :identities, presence: true, if: proc { oauth == true }
