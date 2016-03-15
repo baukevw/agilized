@@ -3,6 +3,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.includes(:roles).find(params[:id])
   end
 end
